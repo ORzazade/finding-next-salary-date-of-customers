@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/FindNextSalaryDate/bin/Debug
+/FindNextSalaryDate/obj/Debug
+/FNSD.BL/obj
+/FNSD.Service/bin
+/FNSD.Service/obj/Debug
+/packages
