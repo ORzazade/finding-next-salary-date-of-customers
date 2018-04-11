@@ -34,7 +34,7 @@ namespace FNSD.BL.Extensions
       var firstDay = date.FirstDayOfMonth().AddDays(day == 0 ? 0 : day - 1);
       if (firstDay < date)
       {
-        firstDay = date.AddMonths(1).FirstDayOfMonth();
+        firstDay = date.AddMonths(1).FirstDayOfMonth().AddDays(day == 0 ? 0 : day - 1);
       }
       return firstDay;
     }
@@ -42,6 +42,11 @@ namespace FNSD.BL.Extensions
     {
       var firstDay = date.FirstDayOfMonth();
       if (firstDay < date)
+      {
+        firstDay = date.AddMonths(1).FirstDayOfMonth();
+      }
+
+      if (firstDay.WorkingDay() <= date)
       {
         firstDay = date.AddMonths(1).FirstDayOfMonth();
       }
@@ -58,16 +63,20 @@ namespace FNSD.BL.Extensions
     public static DateTime FirstXDay(this DateTime date, int xday = 1)
     {
       var firstDay = date.FirstDayOfMonth();
-      if (firstDay < date)
-      {
-        firstDay = date.AddMonths(1).FirstDayOfMonth();
-      }
+
       DateTime result = new DateTime();
       int count = 0;
       for (DateTime day = firstDay; count < 7; day = day.AddDays(1))
       {
         if (OffDayProvider.IsXday(day, xday))
         {
+          //check if xday is before currentday try for next month
+          if (day <= date)
+          {
+            day = date.AddMonths(1).FirstDayOfMonth().AddDays(-1);
+            count = 0;
+            continue;
+          }
           result = day;
           break;
         }
@@ -100,6 +109,13 @@ namespace FNSD.BL.Extensions
       {
         if (OffDayProvider.IsXday(day, xday))
         {
+          //check if xday is before currentday try for next month
+          if (day <= date)
+          {
+            day = date.AddMonths(1).FirstDayOfMonth().AddDays(-1);
+            count = 0;
+            continue;
+          }
           result = day;
           break;
         }
@@ -107,6 +123,31 @@ namespace FNSD.BL.Extensions
       }
       return result;
     }
-  }
+    public static DateTime NthWeeksXDay(this DateTime date, int xday = 1, int week = 1)
+    {
+      var firstDay = date.FirstDayOfMonth();
+      DateTime nthWeekEnd = new DateTime();
+      int count = 0;
+      for (DateTime day = firstDay.AddDays(7 * (week - 1)); count < 7; day = day.AddDays(1))
+      {
+        if (OffDayProvider.IsEndOfWeek(day))
+        {
+          nthWeekEnd = day;
+          break;
+        }
+        count++;
+      }
 
+      var nthXDay = date.NthXDay(xday, week);
+      if (nthXDay > nthWeekEnd && week == 1)
+      {
+        throw new Exception("NoSuchDateException");
+      }
+      else if (nthXDay > nthWeekEnd)
+      {
+        nthXDay = nthXDay.AddDays(-7);
+      }
+      return nthXDay;
+    }
+  }
 }

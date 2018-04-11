@@ -10,6 +10,10 @@ namespace FNSD.BL.Providers
       return date.DayOfWeek == DayOfWeek.Sunday
              || date.DayOfWeek == DayOfWeek.Saturday;
     }
+    public bool IsEndOfWeek(DateTime date)
+    {
+      return date.DayOfWeek == DayOfWeek.Sunday;
+    }
     public bool IsXday(DateTime date, int xday = 1)
     {
       var at = (int)date.DayOfWeek;

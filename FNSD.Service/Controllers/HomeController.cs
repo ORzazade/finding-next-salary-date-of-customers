@@ -13,13 +13,14 @@ namespace FNSD.Service.Controllers
       ViewBag.Title = "Home Page";
 
       Calculate calculate = new Calculate();
-      var data=calculate.CalculateNextSalaryDate(new SalaryDateCalculationDto
+      var input = new SalaryDateCalculationDto
       {
-        Day = 12,
-        Week = 0,
-        Current = DateTime.Now,
-        PaymentFrequency = SalaryFrequency.FirstWorkingdayofMonth
-      });
+        Day = 3,
+        Week = 3,
+        Current = new DateTime(2017, 7, 8),
+        PaymentFrequency = SalaryFrequency.NthWeeksXDay
+      };
+      var data = calculate.CalculateNextSalaryDate(input);
       return Json(data.ToShortDateString(), JsonRequestBehavior.AllowGet);
     }
   }

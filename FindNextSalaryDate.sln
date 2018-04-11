@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNSD.Service", "FNSD.Service\FNSD.Service.csproj", "{2F9EF3A1-DF52-487C-8F12-4293F65A7774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNSD.BL", "FNSD.BL\FNSD.BL.csproj", "{7B626F1C-3A75-49B4-BFC8-32706D9E5677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FNSD.BL", "FNSD.BL\FNSD.BL.csproj", "{7B626F1C-3A75-49B4-BFC8-32706D9E5677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNSD.Test", "FNSD.Test\FNSD.Test.csproj", "{8F5B3EDC-7AAA-47F0-9C4C-228096CB9F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7B626F1C-3A75-49B4-BFC8-32706D9E5677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B626F1C-3A75-49B4-BFC8-32706D9E5677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B626F1C-3A75-49B4-BFC8-32706D9E5677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5B3EDC-7AAA-47F0-9C4C-228096CB9F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5B3EDC-7AAA-47F0-9C4C-228096CB9F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5B3EDC-7AAA-47F0-9C4C-228096CB9F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5B3EDC-7AAA-47F0-9C4C-228096CB9F66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,10 @@ namespace FNSD.BL.Providers
     {
       return Providers.Any(x => x.IsOffDay(date));
     }
+    public static bool IsEndOfWeek(DateTime date)
+    {
+      return Providers.Any(x => x.IsEndOfWeek(date));
+    }
     public static bool IsXday(DateTime date, int xday)
     {
       return Providers.Any(x => x.IsXday(date, xday));

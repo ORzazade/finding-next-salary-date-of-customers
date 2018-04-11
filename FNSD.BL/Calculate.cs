@@ -15,7 +15,6 @@ namespace FNSD.BL
       switch (date.PaymentFrequency)
       {
         case SalaryFrequency.SpecificDayofMonth:
-          //Console.WriteLine("{0} -- {1}", date.Current.ToShortDateString(), date.Current.SpecificDayofMonth(date.Day));
           return date.Current.SpecificDayofMonth(date.Day);
         case SalaryFrequency.FirstWorkingdayofMonth:
           return date.Current.FirstWorkingdayofMonth();
@@ -29,6 +28,8 @@ namespace FNSD.BL
           return date.Current.LastXDay(date.Day);
         case SalaryFrequency.NthXDay:
           return date.Current.NthXDay(date.Day, date.Week);
+        case SalaryFrequency.NthWeeksXDay:
+          return date.Current.NthWeeksXDay(date.Day, date.Week);
       }
 
       return DateTime.Now;
