@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FNSD.Service</name>
+    </assembly>
+    <members>
+        <member name="T:FNSD.Service.Controllers.HomeController">
+            <summary>
+            Manages Salary date info
+            </summary>
+        </member>
+        <member name="M:FNSD.Service.Controllers.HomeController.Index(FNSD.BL.Dtos.SalaryDateCalculationDto)">
+            <summary>
+            Finds next salary dates of customer
+            </summary>
+            <param name="input"></param>
+            <returns>Next salary date</returns>
+        </member>
+    </members>
+</doc>

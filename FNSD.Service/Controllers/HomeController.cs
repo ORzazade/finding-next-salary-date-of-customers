@@ -1,27 +1,29 @@
 ﻿using System;
-using System.Web.Mvc;
+using System.Web.Http;
+using System.Web.Http.Description;
 using FNSD.BL;
 using FNSD.BL.Dtos;
-using FNSD.BL.Enums;
 
 namespace FNSD.Service.Controllers
 {
-  public class HomeController : Controller
+  /// <summary>
+  /// Manages Salary date info
+  /// </summary>
+  public class HomeController : ApiController
   {
-    public JsonResult Index()
+    /// <summary>
+    /// Finds next salary dates of customer
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns>Next salary date</returns>
+    [HttpPost]
+    [ResponseType(typeof(DateTime))]
+    public IHttpActionResult Index(SalaryDateCalculationDto input)
     {
-      ViewBag.Title = "Home Page";
-
       Calculate calculate = new Calculate();
-      var input = new SalaryDateCalculationDto
-      {
-        Day = 3,
-        Week = 3,
-        Current = new DateTime(2017, 7, 8),
-        PaymentFrequency = SalaryFrequency.NthWeeksXDay
-      };
+      
       var data = calculate.CalculateNextSalaryDate(input);
-      return Json(data.ToShortDateString(), JsonRequestBehavior.AllowGet);
+      return Ok(data.Date);
     }
   }
 }
